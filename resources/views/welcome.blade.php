@@ -95,7 +95,29 @@
                     <div id="navbar" class="navbar-collapse collapse">
                         <div class="lgx-nav-right navbar-right">
                             <div class="lgx-cart-area">
-                                <a class="lgx-btn lgx-btn-red" href="#">SignUp</a>
+                                <!-- <a class="lgx-btn lgx-btn-red" href="/login">SignUp</a> -->
+                                <ul>
+                                @auth
+                                    <li class="text-left">
+                                        <button type="button" class="lgx-btn lgx-btn-red dropdown-toggle"
+                                                data-toggle="dropdown" aria-haspopup="true"
+                                                aria-expanded="false">
+                                                {{ Auth::user()->last_name }}
+                                        </button>
+                                        <div class="dropdown-menu" style="background: transparent;">
+                                        <form action="{{ route('logout') }}" method="POST">
+                                            @csrf
+                                            <button type="submit" onclick="return confirm('Are you sure you want to vote ');" class="dropdown-item text-center btn-sm" style="margin-top: 0px; margin-left: 128px;">Logout</button>
+                                        </form>
+                                        
+                                        </div>
+                                    </li>
+                                    @else
+                                    <li class="text-left">
+                                        <a class="lgx-btn lgx-btn-red" href="/login">Sign In</a>
+                                    </li>
+                                    @endauth
+                                </ul>
                             </div>
                         </div>
                         <ul class="nav navbar-nav lgx-nav navbar-right">
@@ -404,7 +426,7 @@
 <script src="{{asset('frontend/assets/libs/jquery.easing.min.js')}}"></script>
 
 <!-- type js -->
-<script src="{{assset('frontend/assets/libs/typed/typed.min.js')}}"></script>
+<script src="{{asset('frontend/assets/libs/typed/typed.min.js')}}"></script>
 
 <!-- header parallax js -->
 <script src="{{asset('frontend/assets/libs/header-parallax.js')}}"></script>
@@ -417,6 +439,7 @@
 <script src="{{asset('frontend/assets/js/custom.script.js')}}"></script>
 <script src="{{asset('frontend/assets/js/custom.js')}}"></script>
 
+
 <div class="lgx-switcher-loader"></div>
 <!-- For Demo Purpose Only// Remove From Live -->
 <!-- For Demo Purpose Only //Remove From Live-->
@@ -424,3 +447,4 @@
 
 </body>
 </html>
+
