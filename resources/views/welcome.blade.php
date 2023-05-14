@@ -298,11 +298,12 @@
                                             <div class="candidates-container">
                                                 <div class="col-md-6">
                                                     <label class="candidate-card" onclick="selectCandidate(this)" style="border-radius: 10px;">
-                                                        <input type="radio" name="candidate_id" value="" class="candidate-radio" hidden>
+                                                        <input type="radio" name="candidate_id" value="" class="candidate-radio">
                                                         <div class="candidate-info">
                                                             <div class="row">
+                                                                @foreach($jobseekers as $index=>$value)
                                                                 <div class="col-xs-6">
-                                                                    <img src="{{asset('frontend/assets/img/candidates/Anoop-Swarup.jpg')}}" alt="" height="40%" width="60%" style="border-radius: 10px;">
+                                                                    <img src="/frontend/assets/img/candidates/{{ $candidate->cv }}" alt="" height="40%" width="60%" style="border-radius: 10px;">
                                                                 </div>
                                                                 <div class="col-xs-6">
                                                                     <b>Md. Nayeem</b><br>
@@ -316,6 +317,7 @@
                                                                         </div>
                                                                     </div>
                                                                 </div>
+                                                                @endforeach
                                                             </div>
                                                         </div>
                                                     </label>
