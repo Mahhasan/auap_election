@@ -1,0 +1,31 @@
+.candidates-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    }
+
+    .candidate-card {
+    border: 3px solid #ec398b;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    }
+
+    .candidate-info {
+    margin-bottom: 10px;
+    text-align: center;
+    }
+
+    button[type="submit"] {
+    margin-top: 20px;
+    }
+
+    .candidate-card.selected {
+    background-color: blue;
+    color: white!important;
+    border-color: blue;
+    }
