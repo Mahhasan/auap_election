@@ -11,26 +11,15 @@ class VoteController extends Controller
 {
     public function showForm()
     {
+        if(Auth()->user()->role!="voter"){
+            return redirect()->to('/home');
+        }
         $candidates = Candidate::all();
-        return view('vote.form', compact('candidates'));
+        $check = Vote::where('voter_id', Auth::user()->id)->count();
+        //dd($check);
+        return view('vote.form', compact('candidates','check'));
     }
 
-    // public function submitVote(Request $request)
-    // {
-        
-    //     $vote = new Vote();
-    //     $vote->candidate_id = $request->input('candidate_id');
-    //     $vote->voter_id = auth()->user()->id;
-    //     $vote->save();
-
-    //     return redirect()->route('vote.form')->with('success', 'Vote submitted successfully!');
-    // }
-
-    // public function showResults()
-    // {
-    //     $candidates = Candidate::withCount('votes')->get();
-    //     return view('vote.results', compact('candidates'));
-    // }
 
     public function submitVote(Request $request)
     {
@@ -52,6 +41,9 @@ class VoteController extends Controller
     }
     public function showResults()
     {
+        if(Auth()->user()->role!="admin"){
+            return redirect()->to('/home');
+        }
         $candidates = Candidate::withCount('votes')->get();
         return view('vote.results', compact('candidates'));
     }

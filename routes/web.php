@@ -2,6 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\VoteController;
+use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\ResultController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -25,4 +28,10 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::get('/vote', [VoteController::class, 'showForm'])->name('vote.form');
 Route::post('/vote', [VoteController::class, 'submitVote'])->name('vote.submit');
 Route::get('/results', [VoteController::class, 'showResults'])->name('vote.results');
+
+
+Route::get('/result/{candidate}', [ResultController::class, 'downloadCandidateResult'])->name('result.download.candidate');
+Route::get('/result', [ResultController::class, 'downloadOverallResult'])->name('result.overall');
+
+
 
