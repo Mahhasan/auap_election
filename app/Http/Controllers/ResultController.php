@@ -10,19 +10,13 @@ class ResultController extends Controller
 {
     //
     
-    public function downloadCandidateResult($candidateId)
+    public function downloadCandidateResult()
 {
-    $candidate = Candidate::findOrFail($candidateId);
-    $votes = Vote::where('candidate_id', $candidateId)->count();
+    $candidates = Candidate::all();
+    //$votes = Vote::whereIn('candidate_id',[$candidates])->count();
+    //dd($votes);
     
-    $data = [
-        'title' => 'Welcome to ItSolutionStuff.com',
-    ];
-    
-    $pdf = PDF::loadView('result.candidate', $data);
-    //dd($pdf);
-    
-    return $pdf->download('itsolutionstuff.pdf');
+    return PDF::loadView('result.candidate', compact('candidates'))->download('report.pdf');
 }
 
 public function downloadOverallResult()

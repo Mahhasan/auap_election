@@ -9,6 +9,6 @@
 
 
 @endforeach
-<a href="{{ route('result.download.candidate',$candidate->id) }}" class="btn btn-primary">Download Result</a>
+<a href="{{ route('result.download.candidate') }}" class="btn btn-primary">Download Result</a>
 
 @endsection

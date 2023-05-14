@@ -29,8 +29,8 @@ Route::get('/vote', [VoteController::class, 'showForm'])->name('vote.form');
 Route::post('/vote', [VoteController::class, 'submitVote'])->name('vote.submit');
 Route::get('/results', [VoteController::class, 'showResults'])->name('vote.results');
 
-
-Route::get('/result/{candidate}', [ResultController::class, 'downloadCandidateResult'])->name('result.download.candidate');
+//PDF Generate
+Route::get('/vote-result', [ResultController::class, 'downloadCandidateResult'])->name('result.download.candidate');
 Route::get('/result', [ResultController::class, 'downloadOverallResult'])->name('result.overall');
 
 
