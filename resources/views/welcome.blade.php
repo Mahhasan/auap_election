@@ -181,12 +181,12 @@
                     <div class="col-sm-12">
                         <div class="lgx-about-content-area lgx-about-content-area-center">
                             <div class="lgx-heading">
-                                <h2 class="heading">About Us</h2>
+                                <h2 class="heading">About AUAP</h2>
                                 <!-- <h3 class="subheading">Why Happy New Year 2021 ?</h3> -->
                             </div>
                             <div class="lgx-about-content">
                                 <p class="text">
-                                    Morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris Eonec eu ribero sit amet quam egestas semper. Aenean are ultricies mi vitae.
+                                    The leaders of AUAP have adopted a unified vision for the organization and that is the promotion of the general welfare and good image of their members. Through the cooperation of all these leaders, AUAP has the capability to shape and influence the outlook of higher education regionally and globally. The heads of these higher education institutions enjoy a global network of supportive colleagues and this enables AUAP to secure support for member institutions’ interests and concerns.
                                 </p>
                                 <div class="section-btn-area">
                                     <a class="lgx-btn" target="_blank" href="https://auap.org/">Visit AUAP</a>
@@ -290,25 +290,26 @@
                         </div>
                         <!--//main COL-->
                     </div>
-                    <div class="row">
-                        <div class="container">
-                            <div class="form-container">
-                                    <div class="candidates-wrapper">
-                                        <form action="#" method="POST">
-                                            <div class="candidates-container">
+                    <div class="container">
+                        <div class="form-container">
+                                <div class="candidates-wrapper">
+                                    <form action="#" method="POST">
+                                        <div class="candidates-container">
+                                            
+                                            <div class="row">
+                                                @foreach($candidates as $candidate)
                                                 <div class="col-md-6">
                                                     <label class="candidate-card" onclick="selectCandidate(this)" style="border-radius: 10px;">
-                                                        <input type="radio" name="candidate_id" value="" class="candidate-radio">
+                                                        <input type="radio" name="candidate_id" value="" class="candidate-radio" hidden>
                                                         <div class="candidate-info">
-                                                            <div class="row">
-                                                                @foreach($jobseekers as $index=>$value)
-                                                                <div class="col-xs-6">
-                                                                    <img src="/frontend/assets/img/candidates/{{ $candidate->cv }}" alt="" height="40%" width="60%" style="border-radius: 10px;">
+                                                            <div class="row"> 
+                                                                <div class="col-md-6">
+                                                                    <img src="/frontend/assets/img/candidates/{{ $candidate->profile_pic }}" alt="" height="50%" width="80%" style="border-radius: 10px;">
                                                                 </div>
-                                                                <div class="col-xs-6">
-                                                                    <b>Md. Nayeem</b><br>
-                                                                    <small>Daffodil International University</small>
-                                                                    <b>Daffodil International University</b>
+                                                                <div class="col-md-6 text-left">
+                                                                    <b>{{ $candidate->first_name }} {{ $candidate->last_name }}</b><br>
+                                                                    <small>{{ $candidate->designation }}</small><br>
+                                                                    <small>{{ $candidate->organization }}</small><br>
                                                                     <div class="row" style="padding-top: 24px;">
                                                                         <div class="col-sm-12" style="display: flex;
                                                                         justify-content: space-around;">
@@ -317,37 +318,39 @@
                                                                         </div>
                                                                     </div>
                                                                 </div>
-                                                                @endforeach
                                                             </div>
                                                         </div>
                                                     </label>
                                                 </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-xs-12 text-center">
-                                                    <button type="submit">Submit Vote</button>
-                                                </div>
+                                                @endforeach
                                             </div>
                                             
-                                        </form>
-                                    </div>
-                            </div>
+                                        </div>
+                                        
+                                        <div class="row">
+                                            <div class="col-xs-12 text-center">
+                                                <button type="submit">Submit Vote</button>
+                                            </div>
+                                        </div>
+                                        
+                                    </form>
+                                </div>
                         </div>
                     </div>
-                    <!--//.ROW-->
                 </div>
                 <!-- //.CONTAINER -->
             </div>
         </div>
     </section>
     <!--TRAVEL INFO END-->
-
     <!-- ModalForCV -->
     <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg">
           <div class="modal-content">
-            <iframe src="{{asset('frontend/assets/img/test.pdf')}}" frameborder="0" width="100%" height="600px"></iframe>
-          </div>
+            @foreach($candidates as $candidate)
+            <iframe src="/candidate_cv/{{$candidate->cv}}" frameborder="0" width="100%" height="600px"></iframe>
+            @endforeach
+        </div>
         </div>
     </div>
 
@@ -356,8 +359,9 @@
         <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-body">
-                <iframe src="https://www.youtube.com/embed/bn-XeQNKULI" frameborder="0" width="100%" height=450px;></iframe>
-                
+                @foreach($candidates as $candidate)
+                <iframe src="{{$candidate->video}} frameborder="0" width="100%" height=450px;></iframe>
+                @endforeach
             </div>
             <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>

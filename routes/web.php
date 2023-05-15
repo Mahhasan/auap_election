@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\VoteController;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\ResultController;
+use App\Http\Controllers\WelcomeController;
 
 
 /*
@@ -17,9 +18,11 @@ use App\Http\Controllers\ResultController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+Route::get('/', [WelcomeController::class, 'index']);
+// Route::get('/', [App\Http\Controllers\HomeController::class, 'candidateInfo']);
 
 Auth::routes();
 

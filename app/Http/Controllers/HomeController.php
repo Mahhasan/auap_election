@@ -1,8 +1,10 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Models\Candidate;
+use App\Models\Vote;
 use Illuminate\Http\Request;
+
 
 class HomeController extends Controller
 {
@@ -28,4 +30,11 @@ class HomeController extends Controller
         }
         return view('home');
     }
+
+    public function candidateInfo() {
+        $candidates = Candidate::all();
+        return view('welcome', compact('candidates'));
+    }
+
+
 }
