@@ -9,11 +9,16 @@ use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 class VoteController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     public function showForm()
     {
-        if(Auth()->user()->role!="voter"){
+        if(Auth()->user()->role !="voter"){
             return redirect()->to('/home');
         }
+
         $candidates = Candidate::all();
         $check = Vote::where('voter_id', Auth::user()->id)->count();
         return view('vote.form', compact('candidates','check'));
@@ -28,7 +33,7 @@ class VoteController extends Controller
 
         $voter = Auth::user();
         if ($voter->votes()->exists()) {
-            return redirect()->route('/')->with('error', 'You have already voted!');
+            return redirect()->route('vote.submit')->with('error', 'You have already voted!');
         }
 
         $vote = new Vote();

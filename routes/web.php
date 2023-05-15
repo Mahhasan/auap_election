@@ -22,15 +22,15 @@ use App\Http\Controllers\WelcomeController;
 //     return view('welcome');
 // });
 Route::get('/', [WelcomeController::class, 'index']);
-Route::post('/', [VoteController::class, 'submitVote'])->name('vote.submit');
+// Route::post('/', [VoteController::class, 'submitVote'])->name('vote.submit');
 // Route::get('/', [App\Http\Controllers\HomeController::class, 'candidateInfo']);
 
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-// Route::get('/vote', [VoteController::class, 'showForm'])->name('vote.form');
-// Route::post('/vote', [VoteController::class, 'submitVote'])->name('vote.submit');
+Route::get('/vote', [VoteController::class, 'showForm'])->name('vote.form');
+Route::post('/vote', [VoteController::class, 'submitVote'])->name('vote.submit');
 Route::get('/results', [VoteController::class, 'showResults'])->name('vote.results');
 
 //PDF Generate

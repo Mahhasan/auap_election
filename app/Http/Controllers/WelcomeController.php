@@ -16,8 +16,6 @@ class WelcomeController extends Controller
     public function index()
     {
         $candidates = Candidate::all();
-        $check = Vote::where('voter_id', Auth::user()->id)->count();
-        $voted = Vote::where('voter_id', Auth::user()->id)->select('candidate_id')->first();
-        return view('welcome', compact('candidates', 'check', 'voted'));
+        return view('welcome', compact('candidates'));
     }
 }
