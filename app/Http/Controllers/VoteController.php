@@ -16,7 +16,6 @@ class VoteController extends Controller
         }
         $candidates = Candidate::all();
         $check = Vote::where('voter_id', Auth::user()->id)->count();
-        //dd($check);
         return view('vote.form', compact('candidates','check'));
     }
 
@@ -29,7 +28,7 @@ class VoteController extends Controller
 
         $voter = Auth::user();
         if ($voter->votes()->exists()) {
-            return redirect()->route('vote.form')->with('error', 'You have already voted!');
+            return redirect()->route('/')->with('error', 'You have already voted!');
         }
 
         $vote = new Vote();
@@ -37,7 +36,7 @@ class VoteController extends Controller
         $vote->voter_id = $voter->id;
         $vote->save();
 
-        return redirect()->route('vote.form')->with('success', 'Vote submitted successfully!');
+        return redirect()->route('vote.submit')->with('success', 'Vote submitted successfully!');
     }
     public function showResults()
     {

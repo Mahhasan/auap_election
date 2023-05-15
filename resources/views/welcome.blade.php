@@ -281,6 +281,10 @@
         <div id="lgx-candidates" class="lgx-travelinfo">
             <div class="lgx-inner">
                 <div class="container">
+                    @if(session('success'))
+                    <h2 class="text-center">You are allready Voted to <span class="text-info">{{$voted->candidate->first_name}} {{$voted->candidate->last_name}}</span></h2>
+                    @elseif(isset($candidates))
+                    @if(!$check)
                     <div class="row">
                         <div class="col-xs-12">
                             <div class="lgx-heading">
@@ -292,51 +296,55 @@
                     </div>
                     <div class="container">
                         <div class="form-container">
-                                <div class="candidates-wrapper">
-                                    <form action="#" method="POST">
-                                        <div class="candidates-container">
-                                            
-                                            <div class="row">
-                                                @foreach($candidates as $candidate)
-                                                <div class="col-md-6">
-                                                    <label class="candidate-card" onclick="selectCandidate(this)" style="border-radius: 10px;">
-                                                        <input type="radio" name="candidate_id" value="" class="candidate-radio" hidden>
-                                                        <div class="candidate-info">
-                                                            <div class="row"> 
-                                                                <div class="col-md-6">
-                                                                    <img src="/frontend/assets/img/candidates/{{ $candidate->profile_pic }}" alt="" height="50%" width="80%" style="border-radius: 10px;">
-                                                                </div>
-                                                                <div class="col-md-6 text-left">
-                                                                    <b>{{ $candidate->first_name }} {{ $candidate->last_name }}</b><br>
-                                                                    <small>{{ $candidate->designation }}</small><br>
-                                                                    <small>{{ $candidate->organization }}</small><br>
-                                                                    <div class="row" style="padding-top: 24px;">
-                                                                        <div class="col-sm-12" style="display: flex;
-                                                                        justify-content: space-around;">
-                                                                            <button type="button" data-toggle="modal" data-target="#exampleModalCenter" class="btn-sm " style="flex-grow: 1; margin-right: 5px;"><i class="fa fa-file" aria-hidden="true"></i> Video</button>
-                                                                            <button type="button" data-toggle="modal" data-target=".bd-example-modal-lg" class="btn-sm" style="flex-grow: 1; margin-left: 5px;"><i class="fa fa-video-camera" aria-hidden="true"></i> CV</button>
-                                                                        </div>
+                            <div class="candidates-wrapper">
+                                <form action="{{ route('vote.submit') }}" method="POST">
+                                    @csrf
+                                    <div class="candidates-container">
+                                        
+                                        <div class="row">
+                                            @foreach($candidates as $candidate)
+                                            <div class="col-md-6">
+                                                <label class="candidate-card" onclick="selectCandidate(this)" style="border-radius: 10px;">
+                                                <input type="radio" name="candidate_id" value="{{ $candidate->id }}" class="candidate-radio" hidden>
+                                                    <div class="candidate-info">
+                                                        <div class="row"> 
+                                                            <div class="col-md-6">
+                                                                <img src="/frontend/assets/img/candidates/{{ $candidate->profile_pic }}" alt="" height="50%" width="80%" style="border-radius: 10px;">
+                                                            </div>
+                                                            <div class="col-md-6 text-left">
+                                                                <b>{{ $candidate->first_name }} {{ $candidate->last_name }}</b><br>
+                                                                <small>{{ $candidate->designation }}</small><br>
+                                                                <small>{{ $candidate->organization }}</small><br>
+                                                                <div class="row" style="padding-top: 24px;">
+                                                                    <div class="col-sm-12" style="display: flex;
+                                                                    justify-content: space-around;">
+                                                                        <button type="button" data-toggle="modal" data-target="#exampleModalCenter{{$candidate->id}}" class="btn-sm " style="flex-grow: 1; margin-right: 5px;"><i class="fa fa-file" aria-hidden="true"></i> Video</button>
+                                                                        <button type="button" data-toggle="modal" data-target="#exampleCV{{$candidate->id}}" class="btn-sm" style="flex-grow: 1; margin-left: 5px;"><i class="fa fa-video-camera" aria-hidden="true"></i> CV</button>
                                                                     </div>
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                    </label>
-                                                </div>
-                                                @endforeach
+                                                    </div>
+                                                </label>
                                             </div>
-                                            
+                                            @endforeach
                                         </div>
-                                        
-                                        <div class="row">
-                                            <div class="col-xs-12 text-center">
-                                                <button type="submit">Submit Vote</button>
-                                            </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-xs-12 text-center">
+                                            @if(Auth::check())
+                                            <button type="submit">Submit Vote</button>
+                                            @endif
                                         </div>
-                                        
-                                    </form>
-                                </div>
+                                    </div>
+                                </form>
+                            </div>
                         </div>
                     </div>
+                    @else
+                        <h2 class="text-center">You are allready Voted to <span class="text-info">{{$voted->candidate->first_name}} {{$voted->candidate->last_name}}</span></h2>
+                    @endif
+                    @endif 
                 </div>
                 <!-- //.CONTAINER -->
             </div>
@@ -344,24 +352,23 @@
     </section>
     <!--TRAVEL INFO END-->
     <!-- ModalForCV -->
-    <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    @foreach($candidates as $candidate)
+    <div class="modal fade bd-example-modal-lg" id="exampleCV{{$candidate->id}}" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg">
           <div class="modal-content">
-            @foreach($candidates as $candidate)
             <iframe src="/candidate_cv/{{$candidate->cv}}" frameborder="0" width="100%" height="600px"></iframe>
-            @endforeach
         </div>
         </div>
     </div>
+    @endforeach
 
     <!-- ModalForVideo -->
-    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    @foreach($candidates as $candidate)
+    <div class="modal fade" id="exampleModalCenter{{$candidate->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-body">
-                @foreach($candidates as $candidate)
-                <iframe src="{{$candidate->video}} frameborder="0" width="100%" height=450px;></iframe>
-                @endforeach
+                <iframe src="{{$candidate->video}}" frameborder="0" width="100%" height=450px;></iframe>
             </div>
             <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -369,7 +376,7 @@
         </div>
         </div>
     </div>
-
+    @endforeach
 
 
 <!--FOOTER-->
