@@ -4,7 +4,7 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-xl-10 col-lg-12 col-md-9">
-            <div class="card o-hidden border-0 shadow-lg my-5">
+            <div class="card o-hidden border-0 shadow-lg my-5" style="margin-top: 10rem;">
                 <div class="card-body p-0">
                     <!-- Nested Row within Card Body -->
                     <div class="row">
@@ -49,7 +49,7 @@
                                     </button>
 
                                 </form>
-                                <hr>
+                                <!-- <hr>
                                 <div class="text-center">
                                     @if (Route::has('password.request'))
                                     <a class="small" href="{{ route('password.request') }}">Forgot Password?</a>
@@ -57,7 +57,7 @@
                                 </div>
                                 <div class="text-center">
                                     <a class="small" href="{{ route('register') }}">Create an Account</a>
-                                </div>
+                                </div> -->
                             </div>
                         </div>
                     </div>

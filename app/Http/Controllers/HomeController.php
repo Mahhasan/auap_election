@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\Models\Candidate;
 use App\Models\Vote;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 
@@ -28,7 +29,15 @@ class HomeController extends Controller
         if(Auth()->user()->role!="admin"){
             return redirect()->to('/');
         }
-        return view('home');
+        $total_candidate = Candidate::count();
+        $total_voter = User::where('role', 'voter')->count();
+        $casted_votes = Vote::count();
+        $shwuopTotalVote = Vote::where('candidate_id', '1')->count();
+        $eskendaryTotalVote = Vote::where('candidate_id', '2')->count();
+        $akmTotalVote = Vote::where('candidate_id', '3')->count();
+        $anuTotalVote = Vote::where('candidate_id', '4')->count();
+
+        return view('home', compact('total_candidate', 'total_voter', 'casted_votes', 'shwuopTotalVote', 'eskendaryTotalVote', 'akmTotalVote', 'anuTotalVote'));
     }
 
     // public function candidateInfo() {

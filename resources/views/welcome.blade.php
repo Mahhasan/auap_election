@@ -98,22 +98,22 @@
                                 <!-- <a class="lgx-btn lgx-btn-red" href="/login">SignUp</a> -->
                                 <ul>
                                 @auth
-                                    <li class="text-left">
+                                    <li class="text-left" style="list-style: none;">
                                         <button type="button" class="lgx-btn lgx-btn-red dropdown-toggle"
                                                 data-toggle="dropdown" aria-haspopup="true"
                                                 aria-expanded="false">
-                                                {{ Auth::user()->last_name }}
+                                                {{ Auth::user()->first_name }} {{ Auth::user()->last_name }}
                                         </button>
                                         <div class="dropdown-menu" style="background: transparent;">
                                         <form action="{{ route('logout') }}" method="POST">
                                             @csrf
-                                            <button type="submit" onclick="return confirm('Are you sure you want to vote ');" class="dropdown-item text-center btn-sm" style="margin-top: 0px; margin-left: 128px;">Logout</button>
+                                            <button type="submit" class="dropdown-item text-center btn-sm" style="margin-top: 0px; margin-left: 128px;">Logout</button>
                                         </form>
                                         
                                         </div>
                                     </li>
                                     @else
-                                    <li class="text-left">
+                                    <li class="text-left" style="list-style: none;">
                                         <a class="lgx-btn lgx-btn-red" href="/login">Sign In</a>
                                     </li>
                                     @endauth
@@ -125,8 +125,8 @@
                                 <a href="index.html" class=" active" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Home</a>
                             <li>
                             <li><a class="lgx-scroll" href="#lgx-about">About</a></li>
-                            <li><a class="lgx-scroll" href="#lgx-candidates">Candidates</a></li>
                             <li><a class="lgx-scroll" href="#lgx-management">Management</a></li>
+                            <li><a class="lgx-scroll" href="#lgx-candidates">Candidates</a></li>
                     </div><!--/.nav-collapse -->
                 </nav>
             </div>
@@ -155,7 +155,7 @@
                                     <h3 class="location">Selection for Secretary General</h3>
                                     <div class="action-area">
                                         <div class="lgx-video-area">
-                                            <a class="lgx-btn lgx-btn-red" href="#lgx-candidates">Vote your favorite Candidate</a>
+                                            <a class="lgx-btn lgx-btn-red" href="#lgx-candidates">Choose your favorite Candidate</a>
                                         </div>
                                     </div>
                                 </div>
@@ -185,7 +185,7 @@
                                 <!-- <h3 class="subheading">Why Happy New Year 2021 ?</h3> -->
                             </div>
                             <div class="lgx-about-content">
-                                <p class="text">
+                                <p class="text" style="text-align:justify; word-spacing:-2px;">
                                     The leaders of AUAP have adopted a unified vision for the organization and that is the promotion of the general welfare and good image of their members. Through the cooperation of all these leaders, AUAP has the capability to shape and influence the outlook of higher education regionally and globally. The heads of these higher education institutions enjoy a global network of supportive colleagues and this enables AUAP to secure support for member institutions’ interests and concerns.
                                 </p>
                                 <div class="section-btn-area">
@@ -292,41 +292,36 @@
                     </div>
                     <div class="container">
                         <div class="form-container">
-                            <div class="candidates-wrapper">
-                                <div class="candidates-container">
-                                    <div class="row">
-                                        @foreach($candidates as $candidate)
-                                        <div class="col-md-6">
-                                            <label class="candidate-card" onclick="selectCandidate(this)" style="border-radius: 10px;">
-                                            <input type="radio" name="candidate_id" value="{{ $candidate->id }}" class="candidate-radio" hidden>
-                                                <div class="candidate-info">
-                                                    <div class="row"> 
-                                                        <div class="col-md-6">
-                                                            <img src="/frontend/assets/img/candidates/{{ $candidate->profile_pic }}" alt="" height="50%" width="80%" style="border-radius: 10px;">
-                                                        </div>
-                                                        <div class="col-md-6 text-left">
-                                                            <b>{{ $candidate->first_name }} {{ $candidate->last_name }}</b><br>
-                                                            <small>{{ $candidate->designation }}</small><br>
-                                                            <small>{{ $candidate->organization }}</small><br>
-                                                            <div class="row" style="padding-top: 24px;">
-                                                                <div class="col-sm-12" style="display: flex;
-                                                                justify-content: space-around;">
-                                                                    <button type="button" data-toggle="modal" data-target="#exampleModalCenter{{$candidate->id}}" class="btn-sm " style="flex-grow: 1; margin-right: 5px;"><i class="fa fa-file" aria-hidden="true"></i> Video</button>
-                                                                    <button type="button" data-toggle="modal" data-target="#exampleCV{{$candidate->id}}" class="btn-sm" style="flex-grow: 1; margin-left: 5px;"><i class="fa fa-video-camera" aria-hidden="true"></i> CV</button>
-                                                                </div>
-                                                            </div>
+                            <div class="row">
+                                @foreach($candidates as $candidate)
+                                <div class="col-md-6" style="border-radius: 10px; margin-bottom: 20px;">
+                                    <div class="candidate-card" style="border-radius: 10px; margin-bottom: 20px;">
+                                        <div class="candidate-info">
+                                            <div class="row"> 
+                                                <div class="col-md-6">
+                                                    <img src="/frontend/assets/img/candidates/{{ $candidate->profile_pic }}" alt="" height="50%" width="80%" style="border-radius: 10px;">
+                                                </div>
+                                                <div class="col-md-6 text-left">
+                                                    <b>{{ $candidate->first_name }} {{ $candidate->last_name }}</b><br>
+                                                    <small>{{ $candidate->designation }}</small><br>
+                                                    <small>{{ $candidate->organization }}</small><br>
+                                                    <div class="row" style="padding-top: 24px;">
+                                                        <div class="col-sm-12" style="display: flex; justify-content: space-around;">
+                                                            <button type="button" data-toggle="modal" data-target="#exampleModalCenter{{$candidate->id}}" class="btn-sm " style="flex-grow: 1; margin-right: 5px;"><i class="fa fa-file" aria-hidden="true"></i> Video</button>
+                                                            <button type="button" data-toggle="modal" data-target="#exampleCV{{$candidate->id}}" class="btn-sm" style="flex-grow: 1; margin-left: 5px;"><i class="fa fa-video-camera" aria-hidden="true"></i> CV</button>
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </label>
+                                            </div>
                                         </div>
-                                        @endforeach
                                     </div>
                                 </div>
-                                <div class="row">
-                                    <div class="col-xs-12 text-center">
-                                        <a href="/vote">Submit Vote</a>
-                                    </div>
+                                @endforeach
+                            </div> 
+                            <div class="row">
+                                
+                                <div class="col-xs-12 text-center">
+                                    <a class="btn btn-lg btn-primary" href="/vote"><i class="fa fa-hand-pointer-o"></i> Click here to vote your favorite Candidate</a>
                                 </div>
                             </div>
                         </div>
@@ -336,6 +331,8 @@
             </div>
         </div>
     </section>
+
+
     <!--TRAVEL INFO END-->
     <!-- ModalForCV -->
     @foreach($candidates as $candidate)
@@ -350,7 +347,7 @@
 
     <!-- ModalForVideo -->
     @foreach($candidates as $candidate)
-    <div class="modal fade" id="exampleModalCenter{{$candidate->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal fade bd-example-modal-lg2" id="exampleModalCenter{{$candidate->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-body">
@@ -372,7 +369,7 @@
             <div class="container">
                 <div class="lgx-footer-bottom">
                     <div class="lgx-copyright">
-                        <p> <span>©</span> 2022 <a href="https://auap.org/" target="_blank">AUAP</a>, All Right Reserved</p>
+                        <p> <span>©</span> 2023 <a href="https://auap.org/" target="_blank">AUAP</a>, All Right Reserved</p>
                     </div>
                 </div>
 

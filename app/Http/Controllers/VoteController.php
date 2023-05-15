@@ -21,7 +21,8 @@ class VoteController extends Controller
 
         $candidates = Candidate::all();
         $check = Vote::where('voter_id', Auth::user()->id)->count();
-        return view('vote.form', compact('candidates','check'));
+        $voted = Vote::where('voter_id', Auth::user()->id)->select('candidate_id')->first();
+        return view('vote.form', compact('candidates','check','voted'));
     }
 
 
