@@ -61,9 +61,11 @@
     <!-- MASTER  STYLESHEET  -->
     <link id="lgx-master-style" rel="stylesheet" href="{{asset('frontend/assets/css/style-default.min.css')}}" media="all"/>
     <link rel="stylesheet" href="frontend/assets/css/custom.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.0/css/toastr.css" rel="stylesheet" />
 
     <!-- MODERNIZER CSS  -->
     <script src="{{asset('frontend/assets/js/vendor/modernizr-2.8.3.min.js')}}"></script>
+
 </head>
 
 <body class="home">
@@ -88,7 +90,7 @@
                         </button>
                         <div class="lgx-logo">
                             <a href="index.html" class="lgx-scroll">
-                                <img src="{{asset('frontend/assets/img/logo.png')}}" alt="AUAP Logo" height="81" width="180"/>
+                                <img src="{{asset('frontend/assets/img/logo.png')}}" alt="AUAP Logo" height="65" width="75"/>
                             </a>
                         </div>
                     </div> 
@@ -125,7 +127,7 @@
                                 <a href="index.html" class=" active" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Home</a>
                             <li>
                             <li><a class="lgx-scroll" href="#lgx-about">About</a></li>
-                            <li><a class="lgx-scroll" href="#lgx-management">Management</a></li>
+                            <!-- <li><a class="lgx-scroll" href="#lgx-management">Management</a></li> -->
                             <li><a class="lgx-scroll" href="#lgx-candidates">Candidates</a></li>
                     </div><!--/.nav-collapse -->
                 </nav>
@@ -137,39 +139,39 @@
 <!--HEADER END-->
 
 
-    <!--BANNER-->
-    <section>
-        <div class="lgx-banner lgx-banner4">
-            <div class="lgx-banner-style">
-                <div class="lgx-inner lgx-inner-fixed">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-xs-12">
-                                <div class="lgx-banner-info lgx-banner-info-center"> <!--lgx-banner-info-center lgx-banner-info-black lgx-banner-info-big lgx-banner-info-bg-->
-                                    <!-- <h1 style="color: white;">UX Conference <span><b>2</b><b>0</b><b>2</b><b>1</b></span></h1> -->
-                                    <h2 style="color: white;">Votes Starts In</h2>
-                                    <div class="circular-countdown-area">
-                                        <div id="circular-countdown" data-date="2023-05-16 00:00:00" ></div>
-                                    </div>
-                                    <h2 class="title">AUAP <span><b>2</b><b>0</b><b>2</b><b>3</b></span></h2>
-                                    <h3 class="location">Selection for Secretary General</h3>
-                                    <div class="action-area">
-                                        <div class="lgx-video-area">
-                                            <a class="lgx-btn lgx-btn-red" href="#lgx-candidates">Choose your favorite Candidate</a>
-                                        </div>
+<!--BANNER-->
+<section>
+    <div class="lgx-banner lgx-banner4">
+        <div class="lgx-banner-style">
+            <div class="lgx-inner lgx-inner-fixed">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <div class="lgx-banner-info lgx-banner-info-center"> <!--lgx-banner-info-center lgx-banner-info-black lgx-banner-info-big lgx-banner-info-bg-->
+                                <!-- <h1 style="color: white;">UX Conference <span><b>2</b><b>0</b><b>2</b><b>1</b></span></h1> -->
+                                <h2 style="color: white;">Votes Starts In</h2>
+                                <div class="circular-countdown-area">
+                                    <div id="circular-countdown" data-date="2023-06-01 00:00:00" ></div>
+                                </div>
+                                <h2 class="title">AUAP <span><b>2</b><b>0</b><b>2</b><b>3</b></span></h2>
+                                <h3 class="location">Selection for Secretary General</h3>
+                                <div class="action-area">
+                                    <div class="lgx-video-area">
+                                        <a class="lgx-btn lgx-btn-red" href="#lgx-candidates">Choose your favorite Candidate</a>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <!--//.ROW-->
                     </div>
-                    <!-- //.CONTAINER -->
+                    <!--//.ROW-->
                 </div>
-                <!-- //.INNER -->
+                <!-- //.CONTAINER -->
             </div>
+            <!-- //.INNER -->
         </div>
-    </section>
-    <!--BANNER END-->
+    </div>
+</section>
+<!--BANNER END-->
 
 
 <!--ABOUT-->
@@ -203,7 +205,7 @@
 
 
 <!--SPEAKERS-->
-<section>
+<!-- <section>
     <div id="lgx-management" class="lgx-speakers lgx-speakers2">
         <div class="lgx-inner">
             <div class="container">
@@ -214,7 +216,7 @@
                         </div>
                     </div>
                 </div>
-                <!--//.ROW-->
+               
                 <div class="row">
                     <div class="col-xs-12 col-sm-6 col-md-4">
                         <div class="lgx-single-speaker">
@@ -263,66 +265,90 @@
                     </div>
                 </div>
             </div>
-            <!-- //.CONTAINER -->
+            
         </div>
-        <!-- //.INNER -->
+        
     </div>
-</section>
+</section> -->
 <!--SPEAKERS END-->
 
 
 
 
 
+<!-- Popup HTML -->
+<div class="popup" id="popup">
+    <span class="close" onclick="closePopup()" style="color: #ffffff;">&times;</span>
+    <b style="color: #ffffff;">Please select a candidate before submitting your vote.</b>
+</div>
 
+<!-- Overlay -->
+<div class="overlay" id="overlay"></div>
 
-    <!--TRAVEL INFO-->
-    <section>
+<!--TRAVEL INFO-->
+@if(auth()->check())
+<section>
         <div id="lgx-candidates" class="lgx-travelinfo">
             <div class="lgx-inner">
                 <div class="container">
+                    
+                    
                     <div class="row">
                         <div class="col-xs-12">
                             <div class="lgx-heading">
                                 <h2 class="heading">Candidates</h2>
                                 <h3 class="subheading">Vote your favorite candidate by selecting candidate card.</h3>
+                                <small class="text-danger"><b>Note: Once you vote, you can not edit or withdraw.</b></small>
                             </div>
                         </div>
                         <!--//main COL-->
                     </div>
                     <div class="container">
                         <div class="form-container">
-                            <div class="row">
-                                @foreach($candidates as $candidate)
-                                <div class="col-md-6" style="border-radius: 10px; margin-bottom: 20px;">
-                                    <div class="candidate-card" style="border-radius: 10px; margin-bottom: 20px;">
-                                        <div class="candidate-info">
-                                            <div class="row"> 
-                                                <div class="col-md-6">
-                                                    <img src="/frontend/assets/img/candidates/{{ $candidate->profile_pic }}" alt="" height="50%" width="80%" style="border-radius: 10px;">
-                                                </div>
-                                                <div class="col-md-6 text-left">
-                                                    <b>{{ $candidate->first_name }} {{ $candidate->last_name }}</b><br>
-                                                    <small>{{ $candidate->designation }}</small><br>
-                                                    <small>{{ $candidate->organization }}</small><br>
-                                                    <div class="row" style="padding-top: 24px;">
-                                                        <div class="col-sm-12" style="display: flex; justify-content: space-around;">
-                                                            <button type="button" data-toggle="modal" data-target="#exampleModalCenter{{$candidate->id}}" class="btn-sm " style="flex-grow: 1; margin-right: 5px;"><i class="fa fa-file" aria-hidden="true"></i> Video</button>
-                                                            <button type="button" data-toggle="modal" data-target="#exampleCV{{$candidate->id}}" class="btn-sm" style="flex-grow: 1; margin-left: 5px;"><i class="fa fa-video-camera" aria-hidden="true"></i> CV</button>
+                            <div class="candidates-wrapper">
+                                <form action="{{ route('vote.submit') }}" id="myForm" method="POST">
+                                    @csrf
+                                    <div class="candidates-container">
+                                        
+                                        <div class="row">
+                                            @foreach($candidates as $candidate)
+                                            <div class="col-md-6">
+                                                <label class="candidate-card" onclick="selectCandidate(this)" style="border-radius: 10px; margin-bottom: 20px;">
+                                                <input type="radio" name="candidate_id" value="{{ $candidate->id }}" class="candidate-radio" hidden>
+                                                    <div class="candidate-info">
+                                                        <div class="row"> 
+                                                            <div class="col-md-6">
+                                                                <img src="/frontend/assets/img/candidates/{{ $candidate->profile_pic }}" alt="" height="50%" width="80%" style="border-radius: 10px;">
+                                                            </div>
+                                                            <div class="col-md-6 text-left">
+                                                                <b>{{ $candidate->first_name }} {{ $candidate->last_name }}</b><br>
+                                                                <small>{{ $candidate->designation }}</small><br>
+                                                                <small>{{ $candidate->organization }}</small><br>
+                                                                <div class="row" style="padding-top: 24px;">
+                                                                    <div class="col-sm-12" style="display: flex;
+                                                                    justify-content: space-around;">
+                                                                        <button type="button" data-toggle="modal" data-target="#exampleModalCenter{{$candidate->id}}" class="btn-sm " style="flex-grow: 1; margin-right: 5px;"><i class="fa fa-file" aria-hidden="true"></i> Video</button>
+                                                                        <button type="button" data-toggle="modal" data-target="#exampleCV{{$candidate->id}}" class="btn-sm" style="flex-grow: 1; margin-left: 5px;"><i class="fa fa-video-camera" aria-hidden="true"></i> CV</button>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
                                                         </div>
                                                     </div>
-                                                </div>
+                                                </label>
                                             </div>
+                                            @endforeach
                                         </div>
                                     </div>
-                                </div>
-                                @endforeach
-                            </div> 
-                            <div class="row">
-                                
-                                <div class="col-xs-12 text-center">
-                                    <a class="btn btn-lg btn-primary" href="/vote"><i class="fa fa-hand-pointer-o"></i> Click here to vote your favorite Candidate</a>
-                                </div>
+                                    <div class="row">
+                                        <div class="col-xs-12 text-center">
+                                            @if(Auth::check())
+                                            
+                                            <button type="submit">Submit Vote</button>
+                                            
+                                            @endif
+                                        </div>
+                                    </div>
+                                </form>
                             </div>
                         </div>
                     </div>
@@ -331,35 +357,94 @@
             </div>
         </div>
     </section>
+    
+@else
 
+<section>
+    <div id="lgx-candidates" class="lgx-travelinfo">
+        <div class="lgx-inner">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="lgx-heading">
+                            <h2 class="heading">Candidates</h2>
+                            <h3 class="subheading">Choose your favorite candidate</h3>
+                        </div>
+                    </div>
+                    <!--//main COL-->
+                </div>
 
-    <!--TRAVEL INFO END-->
-    <!-- ModalForCV -->
-    @foreach($candidates as $candidate)
-    <div class="modal fade bd-example-modal-lg" id="exampleCV{{$candidate->id}}" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg">
-          <div class="modal-content">
-            <iframe src="/candidate_cv/{{$candidate->cv}}" frameborder="0" width="100%" height="600px"></iframe>
-        </div>
+                
+                <div class="container">
+                    <div class="form-container">
+                        <div class="row" style="margin-bottom: 24px;">
+                            @foreach($candidates as $candidate)
+                            <div class="col-md-6">
+                                <div class="candidate-card" style="border-radius: 10px; margin-bottom: 20px;">
+                                    <div class="candidate-info">
+                                        <div class="row"> 
+                                            <div class="col-md-6">
+                                                <img src="/frontend/assets/img/candidates/{{ $candidate->profile_pic }}" alt="" height="50%" width="80%" style="border-radius: 10px;">
+                                            </div>
+                                            <div class="col-md-6 text-left">
+                                                <b>{{ $candidate->first_name }} {{ $candidate->last_name }}</b><br>
+                                                <small>{{ $candidate->designation }}</small><br>
+                                                <small>{{ $candidate->organization }}</small><br>
+                                                <div class="row" style="padding-top: 24px;">
+                                                    <div class="col-sm-12" style="display: flex; justify-content: space-around;">
+                                                        <button type="button" data-toggle="modal" data-target="#exampleModalCenter{{$candidate->id}}" class="btn-sm " style="flex-grow: 1; margin-right: 5px;"><i class="fa fa-file" aria-hidden="true"></i> Video</button>
+                                                        <button type="button" data-toggle="modal" data-target="#exampleCV{{$candidate->id}}" class="btn-sm" style="flex-grow: 1; margin-left: 5px;"><i class="fa fa-video-camera" aria-hidden="true"></i> CV</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            @endforeach
+                        </div> 
+                        <div class="row">
+                            <div class="col-xs-12 text-center ">
+                                <a class="btn btn-lg btn-primary" href="/login"><i class="fa fa-hand-pointer-o"></i> Click here to Login and vote your favorite Candidate</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- //.CONTAINER -->
         </div>
     </div>
-    @endforeach
+</section>
+@endif
 
-    <!-- ModalForVideo -->
-    @foreach($candidates as $candidate)
-    <div class="modal fade bd-example-modal-lg2" id="exampleModalCenter{{$candidate->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
+<!--TRAVEL INFO END-->
+<!-- ModalForCV -->
+@foreach($candidates as $candidate)
+<div class="modal fade bd-example-modal-lg" id="exampleCV{{$candidate->id}}" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
         <div class="modal-content">
-            <div class="modal-body">
-                <iframe src="{{$candidate->video}}" frameborder="0" width="100%" height=450px;></iframe>
-            </div>
-            <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            </div>
+        <iframe src="/candidate_cv/{{$candidate->cv}}" frameborder="0" width="100%" height="600px"></iframe>
+    </div>
+    </div>
+</div>
+@endforeach
+
+<!-- ModalForVideo -->
+@foreach($candidates as $candidate)
+<div class="modal fade bd-example-modal-lg2" id="exampleModalCenter{{$candidate->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+        <div class="modal-body">
+            <iframe src="{{$candidate->video}}" frameborder="0" width="100%" height=450px;></iframe>
         </div>
+        <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
         </div>
     </div>
-    @endforeach
+    </div>
+</div>
+@endforeach
+
 
 
 <!--FOOTER-->
@@ -434,6 +519,33 @@
 <!-- CUSTOM SCRIPT  -->
 <script src="{{asset('frontend/assets/js/custom.script.js')}}"></script>
 <script src="{{asset('frontend/assets/js/custom.js')}}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.0/js/toastr.js"></script>
+
+@if(Session::has('success'))
+<script type="text/javascript">
+    $(function() {
+        toastr.success("{{ Session::get('success') }}");
+    })
+</script>
+@elseif(Session::has('fail'))
+<script type="text/javascript">
+    $(function() {
+        toastr.danger("{{ Session::get('fail') }}");
+    })
+</script>
+@elseif(Session::has('warning'))
+<script type="text/javascript">
+    $(function() {
+        toastr.warning("{{ Session::get('warning') }}");
+    })
+</script>
+@elseif(Session::has('error'))
+<script type="text/javascript">
+    $(function() {
+        toastr.error("{{ Session::get('error') }}");
+    })
+</script>
+@endif
 
 
 <div class="lgx-switcher-loader"></div>

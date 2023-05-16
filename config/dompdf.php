@@ -1,4 +1,5 @@
 <?php
+define('DOMPDF_BASE_PATH', base_path('public/'));
 
 return array(
 
@@ -79,6 +80,8 @@ return array(
          * $dompdf = new DOMPDF();  $dompdf->load_html($htmldata); $dompdf->render(); $pdfdata = $dompdf->output();
          */
         "chroot" => realpath(base_path()),
+
+        
 
         /**
          * Protocol whitelist

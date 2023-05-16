@@ -35,6 +35,27 @@
                                     @enderror
                                 </div>
                             </div>
+                            <div class="form-group row">
+                                <div class="col-sm-6 mb-3 mb-sm-0">
+                                    <input id="designation" type="text" class="form-control form-control-user @error('designation') is-invalid @enderror" name="designation" value="{{ old('designation') }}" required autocomplete="designation" autofocus placeholder="Designation">
+
+                                    @error('designation')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+
+                                <div class="col-sm-6">
+                                <input id="institute" type="text" class="form-control form-control-user @error('institute') is-invalid @enderror" name="institute" value="{{ old('institute') }}" required autocomplete="institute" autofocus placeholder="Institute">
+                                    
+                                    @error('institute')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+                            </div>
 
                             <div class="form-group">
                             <input id="email" type="email" class="form-control form-control-user @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" placeholder="Email Address">

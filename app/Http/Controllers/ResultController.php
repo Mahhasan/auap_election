@@ -13,28 +13,31 @@ class ResultController extends Controller
     public function downloadCandidateResult()
 {
     $candidates = Candidate::all();
+    $highestVoteCandidate = null;
+    $highestVoteCount = 0;
     //$votes = Vote::whereIn('candidate_id',[$candidates])->count();
     //dd($votes);
+    foreach ($candidates as $candidate) {
+        $votes = Vote::where('candidate_id', $candidate->id)->count();
+
+        if ($votes > $highestVoteCount) {
+            $highestVoteCandidate = $candidate->first_name . ' ' . $candidate->last_name;
+            $highestVoteCount = $votes;
+        }
+    }
     
-    return PDF::loadView('result.candidate', compact('candidates'))->download('report.pdf');
+    // return PDF::loadView('result.candidate', compact('candidates'))->download('report.pdf');
+    return PDF::loadView('result.candidate', compact('candidates', 'highestVoteCandidate', 'highestVoteCount'))->download('report.pdf');
 }
 
 public function downloadOverallResult()
 {
-    $candidates = Candidate::all();
-    $resultData = [];
-    
-    foreach ($candidates as $candidate) {
-        $votes = Vote::where('candidate_id', $candidate->id)->count();
-        $resultData[] = [
-            'candidate' => $candidate,
-            'votes' => $votes
-        ];
-    }
-    
-    $pdf = PDF::loadView('result.overall', ['resultData' => $resultData]);
-    
-    return $pdf->download('overall_result.pdf');
+    $vote = Vote::all();
+
+
+    $pdf = PDF::loadView('result.overall', compact('vote'));
+
+    return $pdf->download('overall_result.pdf')->header('Content-Type', 'application/pdf');
 }
 
 }

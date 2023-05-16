@@ -34,15 +34,26 @@ class VoteController extends Controller
 
         $voter = Auth::user();
         if ($voter->votes()->exists()) {
-            return redirect()->route('vote.submit')->with('error', 'You have already voted!');
+            return redirect('/')->with('warning', "You have already voted. Once you vote, you can edit or withdraw. Thank you.");
         }
+        try{
+            if(Auth()->user()->role =="voter"){
+            $vote = new Vote();
+            $vote->candidate_id = $request->input('candidate_id');
+            $vote->voter_id = $voter->id;
+            $vote->save();
+            return redirect('/')->with('success', "Congratulations! Your vote has been submitted successfully");
+            // return redirect()->route('vote.submit')->with('success', 'Vote submitted successfully!');
+            }
+            return redirect('/')->with('error', "You can not vote until you are a member of AUAP.");
 
-        $vote = new Vote();
-        $vote->candidate_id = $request->input('candidate_id');
-        $vote->voter_id = $voter->id;
-        $vote->save();
+        }
+        catch(\Exception $e) {
+            // $msg = $e->getMessage();
+            return redirect('/')->with('fail', "Vote submission Failed! Please try again"); 
+          }
 
-        return redirect()->route('vote.submit')->with('success', 'Vote submitted successfully!');
+        
     }
     public function showResults()
     {
