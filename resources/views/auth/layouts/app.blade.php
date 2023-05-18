@@ -6,8 +6,24 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
+
+
+    <!-- SITE TITLE -->
+    <title>Auap Election</title>
+    <meta name="description" content="AUAP Election"/>
+    <meta name="author" content="spiralworld.biz"/>
+
+    <!-- facebook open graph starts from here, if you don't need then delete open graph related  -->
+    <meta property="og:title" content="AUAP Election"/>
+    <meta property="og:url" content="http://auap.org"/>
+    <meta property="og:image" content="{{asset('frontend/assets/img/logo.png')}}"/>
+    <!-- when you post this page url in facebook , this image will be shown -->
+    <!-- facebook open graph ends from here -->
+
+    <!--  FAVICON AND TOUCH ICONS -->
+    <link rel="shortcut icon" type="image/x-icon" href="{{asset('frontend/assets/img/logo.png')}}"/>
+    <!-- this icon shows in browser toolbar -->
+    <link rel="icon" type="image/x-icon" href="{{asset('frontend/assets/img/logo.png')}}"/>
 
     <title>AUAP Election</title>
 

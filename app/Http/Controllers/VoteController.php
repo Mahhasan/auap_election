@@ -45,7 +45,7 @@ class VoteController extends Controller
             return redirect('/')->with('success', "Congratulations! Your vote has been submitted successfully");
             // return redirect()->route('vote.submit')->with('success', 'Vote submitted successfully!');
             }
-            return redirect('/')->with('error', "You can not vote until you are a member of AUAP.");
+            return redirect('/')->with('error', "You can not vote! Your credentials does not match our voter list.");
 
         }
         catch(\Exception $e) {
