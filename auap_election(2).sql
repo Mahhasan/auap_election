@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 16, 2023 at 03:28 PM
+-- Generation Time: May 18, 2023 at 12:11 PM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.0.25
 
@@ -106,6 +106,13 @@ CREATE TABLE `password_resets` (
   `created_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Dumping data for table `password_resets`
+--
+
+INSERT INTO `password_resets` (`email`, `token`, `created_at`) VALUES
+('fgs.se2@daffodilvarsity.edu.bd', '$2y$10$nXMTSMuXN2IlUfB7gs0kGet4o8Idhjd/YCVvbJ7LKjAd4Xq4ONbIi', '2023-05-18 04:10:34');
+
 -- --------------------------------------------------------
 
 --
@@ -152,7 +159,7 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`id`, `first_name`, `last_name`, `designation`, `institute`, `email`, `number`, `email_verified_at`, `password`, `role`, `remember_token`, `created_at`, `updated_at`) VALUES
 (1, 'Mahmud', 'Hasan', 'Assistant Software Engineer', 'Daffodil International University', 'fgs.se2@daffodilvarsity.edu.bd', '01738574987', NULL, '$2y$10$BhBovrbJP85rETN1M4fuquEa/SdqWuH903VM/42dKeYzgUeRnzYYi', 'admin', NULL, '2023-05-13 07:37:18', '2023-05-13 07:37:18'),
-(2, 'Rakib', 'Hasan', 'Software Engineer', 'Daffodil International University', 'rakibswe.522@gmail.com', '343', NULL, '$2y$10$BhBovrbJP85rETN1M4fuquEa/SdqWuH903VM/42dKeYzgUeRnzYYi', 'voter', NULL, '2023-05-13 07:58:51', '2023-05-13 07:58:51'),
+(2, 'Rakib', 'Hasan', 'Software Engineer', 'Daffodil International University', 'rakibswe.522@gmail.com', '343', NULL, '$2y$10$BhBovrbJP85rETN1M4fuquEa/SdqWuH903VM/42dKeYzgUeRnzYYi', 'voter', 'rzAapBXOeyneaehhK9BLp2B0pLIA88dquF5Ac6xLaIQ1Rt1SpVQCebbQN3VR', '2023-05-13 07:58:51', '2023-05-18 03:29:37'),
 (3, 'Hasan', 'Mahmud', 'Officer', 'Daffodil International University', 'hasan@gmail.com', '12345678', NULL, '$2y$10$yLd4eLBIsMX/cTB1N/qTDOxRen95ya3gJGz2MGvm3px/HFy7NvDcO', 'voter', NULL, '2023-05-13 12:34:57', '2023-05-13 12:34:57'),
 (4, 'Monirul', 'Islam', 'Assistant Officer', 'Daffodil International University', 'dita@mailinator.com', '556', NULL, '$2y$10$G1Mn7oSa9.hzvbnaG.oWmOLk/ZDM9lVpyXkrNoIsWstpvzSnLV/MG', 'voter', NULL, '2023-05-16 01:45:33', '2023-05-16 01:45:33'),
 (5, 'Jannatul', 'Naim', 'Assistant Director', 'Daffodil International University', 'forewu@mailinator.com', '262', NULL, '$2y$10$KexyPz56HpFThhdKViaDz.S5OaULFabozumQ2WcNL4B/kr9sCj87a', 'voter', NULL, '2023-05-16 05:17:05', '2023-05-16 05:17:05'),
@@ -170,7 +177,12 @@ INSERT INTO `users` (`id`, `first_name`, `last_name`, `designation`, `institute`
 (25, 'Shay', 'Melendez', 'Advisor', 'Daffodil International University', 'xuro@mailinator.com', '701547545', NULL, '$2y$10$xD6/NLUg70bQbuKzGf3ONey/iMI/yJXCFb8N7oHM2knyXd5aYmbHG', 'voter', NULL, '2023-05-16 06:28:35', '2023-05-16 06:28:35'),
 (26, 'Chester', 'Flowers', 'Advisor', 'Daffodil International University', 'xinaq@mailinator.com', '5115454545', NULL, '$2y$10$F7VEsT.9RYVnDqLbLkLbRujp5PMCAoQ9PuSVt8HKx28RvN2jPtfja', 'voter', NULL, '2023-05-16 06:28:55', '2023-05-16 06:28:55'),
 (27, 'Mira', 'Wood', 'In aliquam minus occ', 'Eaque totam consequa', 'jifexav@mailinator.com', '970', NULL, '$2y$10$ZkXElI22gr1dCrXohebTvu4NvLqPARODU9w1A0Firn8ElgruiIya.', 'voter', NULL, '2023-05-16 06:29:08', '2023-05-16 06:29:08'),
-(28, 'Walker', 'Winters', 'Officer', 'Daffodil International University', 'gaqeb@mailinator.com', '418455544', NULL, '$2y$10$LTKrztNhkYUVbFOzThJjwugL6t3pRvI/V.41LJOBDvBvKw6qPTJwC', 'voter', NULL, '2023-05-16 06:29:25', '2023-05-16 06:29:25');
+(28, 'Walker', 'Winters', 'Officer', 'Daffodil International University', 'gaqeb@mailinator.com', '418455544', NULL, '$2y$10$LTKrztNhkYUVbFOzThJjwugL6t3pRvI/V.41LJOBDvBvKw6qPTJwC', 'voter', NULL, '2023-05-16 06:29:25', '2023-05-16 06:29:25'),
+(29, 'Dr. Md. Sabur', 'Khan', 'Founder & Chairman', 'Daffodil International University', 'sabur.khan@gmail.com', '12345678', NULL, '$2y$10$aOmHr3V2xPet5ttRGuoLhuafZzXnXc431JfqVvt6gGR.VOwSU4TwW', 'guest', NULL, '2023-05-18 03:59:04', '2023-05-18 03:59:04'),
+(30, 'Hari Mohan', 'Gupta', 'Chancellor', 'Jagran Lakecity University', 'chancellor@jlu.edu.in', '12345678', NULL, '$2y$10$50DX9lzlz9yUZudQYhuTqOTfCiKG2KoZbbed650nOFVLdL82AK9ce', 'guest', NULL, '2023-05-18 04:00:10', '2023-05-18 04:00:10'),
+(31, 'Dr. Andy', 'Pusca', 'President', 'Danubius University of Galaţi', 'andypusca@univ-danubius.ro', '12345678', NULL, '$2y$10$HIibNWKTD7qgv2QNkMbfuu4ORzSLBUUm.hR.B1XGlZqxp4bb58v4K', 'guest', NULL, '2023-05-18 04:01:54', '2023-05-18 04:01:54'),
+(32, 'Supaporn', 'Chuangchid', 'Executive Secretary', 'AUAP', 'secretariat@auap.org', '12345678', NULL, '$2y$10$zkGdJq97Ynpsig0Q05bDBe2U9trwr3btGQVDFsA/fWfqzL.4t7MIG', 'guest', NULL, '2023-05-18 04:03:18', '2023-05-18 04:03:18'),
+(33, 'Kazi Mesbah Ur', 'Rahman', 'Sub Secretariat', 'AUAP', 'info@auap.org', '12345678', NULL, '$2y$10$H7.rhw4xYbqzHi9xPYwtneU5/65O1yYpMQw6/4DZlRkkFe4nxvtq.', 'guest', NULL, '2023-05-18 04:04:50', '2023-05-18 04:04:50');
 
 -- --------------------------------------------------------
 
@@ -210,7 +222,7 @@ INSERT INTO `votes` (`id`, `candidate_id`, `voter_id`, `remember_token`, `create
 (58, '1', '26', NULL, '2023-05-16 06:20:29', '2023-05-16 06:20:29'),
 (59, '4', '27', NULL, '2023-05-16 06:20:29', '2023-05-16 06:20:29'),
 (60, '4', '28', NULL, '2023-05-16 06:20:29', '2023-05-16 06:20:29'),
-(63, '1', '2', NULL, '2023-05-16 07:10:01', '2023-05-16 07:10:01');
+(64, '1', '2', NULL, '2023-05-17 00:11:47', '2023-05-17 00:11:47');
 
 --
 -- Indexes for dumped tables
@@ -295,13 +307,13 @@ ALTER TABLE `personal_access_tokens`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
 
 --
 -- AUTO_INCREMENT for table `votes`
 --
 ALTER TABLE `votes`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=64;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=65;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

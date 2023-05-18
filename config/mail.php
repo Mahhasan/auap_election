@@ -92,7 +92,7 @@ return [
 
     'from' => [
         'address' => env('MAIL_FROM_ADDRESS', 'noreply-jms@daffodilvarsity.edu.bd'),
-        'name' => env('MAIL_FROM_NAME', 'AMS'),
+        'name' => env('MAIL_FROM_NAME', 'AUAPELECTION'),
     ],
 
     /*
