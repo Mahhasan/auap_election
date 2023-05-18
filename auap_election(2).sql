@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 18, 2023 at 12:11 PM
+-- Generation Time: May 18, 2023 at 12:26 PM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.0.25
 
@@ -51,7 +51,6 @@ CREATE TABLE `candidates` (
 INSERT INTO `candidates` (`id`, `first_name`, `last_name`, `email`, `number`, `profile_pic`, `designation`, `organization`, `cv`, `video`, `country`, `remember_token`, `created_at`, `updated_at`) VALUES
 (1, 'Prof. Dr. Anoop', 'Swarup', 'swarup@gmail.com', '1234567890', 'anoop-swarup.jpg', 'Founding Vice Chancellor, JLU India', '&\nChairman Centre for Global Nonkilling, Hawaii, US', 'CV_Dr._Anoop_Swarup_CV.pdf', 'https://www.youtube.com/embed/q7tmr-IkDcM', 'Hawaii, US', NULL, '2023-05-13 16:39:19', '2023-05-13 16:39:19'),
 (2, 'Dr. Abdolmajid', 'Eskandari', 'eskandari@gmail.com', '1234567890', 'capture2131.PNG', 'Director General, \nOffice of International Relations,', 'University of Tehran', 'CV_Prof._Abdolmajid_Eskandari.pdf', 'https://www.youtube.com/embed/pAj8ZhGPiTk', 'Thailand', NULL, '2023-05-13 16:39:19', '2023-05-13 16:39:19'),
-(3, 'Prof. Dr. A.K.M. Fazlul', 'Haque', 'haque@gmail.com', '1234567890', 'akm.jpg', 'Director, Institutional Quality Assurance Cell (IQAC),', 'Daffodil International University, Bangladesh', 'CV_Prof._Dr._A.K.M._Fazlul_Haque.pdf', 'https://www.youtube.com/embed/IaR2L1MNcRw', 'Bangladesh', NULL, '2023-05-13 16:53:13', '2023-05-13 16:53:13'),
 (4, 'Prof. Ujjwal K', 'Chowdhury', 'chowdhury@gmail.com', '1234567890', 'prof-ujjwal-k-chowdhury.jpg', 'Executive Director, \nInternational Online University, Dubai', 'Strategic Adviser & Professor, \nDaffodil International University, Bangladesh', 'CV_Prof._Ujjwal_K_Chowdhury.pdf', 'https://www.youtube.com/embed/qISXmmMPfBc', 'India', NULL, '2023-05-13 16:53:13', '2023-05-13 16:53:13');
 
 -- --------------------------------------------------------
@@ -178,11 +177,11 @@ INSERT INTO `users` (`id`, `first_name`, `last_name`, `designation`, `institute`
 (26, 'Chester', 'Flowers', 'Advisor', 'Daffodil International University', 'xinaq@mailinator.com', '5115454545', NULL, '$2y$10$F7VEsT.9RYVnDqLbLkLbRujp5PMCAoQ9PuSVt8HKx28RvN2jPtfja', 'voter', NULL, '2023-05-16 06:28:55', '2023-05-16 06:28:55'),
 (27, 'Mira', 'Wood', 'In aliquam minus occ', 'Eaque totam consequa', 'jifexav@mailinator.com', '970', NULL, '$2y$10$ZkXElI22gr1dCrXohebTvu4NvLqPARODU9w1A0Firn8ElgruiIya.', 'voter', NULL, '2023-05-16 06:29:08', '2023-05-16 06:29:08'),
 (28, 'Walker', 'Winters', 'Officer', 'Daffodil International University', 'gaqeb@mailinator.com', '418455544', NULL, '$2y$10$LTKrztNhkYUVbFOzThJjwugL6t3pRvI/V.41LJOBDvBvKw6qPTJwC', 'voter', NULL, '2023-05-16 06:29:25', '2023-05-16 06:29:25'),
-(29, 'Dr. Md. Sabur', 'Khan', 'Founder & Chairman', 'Daffodil International University', 'sabur.khan@gmail.com', '12345678', NULL, '$2y$10$aOmHr3V2xPet5ttRGuoLhuafZzXnXc431JfqVvt6gGR.VOwSU4TwW', 'guest', NULL, '2023-05-18 03:59:04', '2023-05-18 03:59:04'),
-(30, 'Hari Mohan', 'Gupta', 'Chancellor', 'Jagran Lakecity University', 'chancellor@jlu.edu.in', '12345678', NULL, '$2y$10$50DX9lzlz9yUZudQYhuTqOTfCiKG2KoZbbed650nOFVLdL82AK9ce', 'guest', NULL, '2023-05-18 04:00:10', '2023-05-18 04:00:10'),
-(31, 'Dr. Andy', 'Pusca', 'President', 'Danubius University of Galaţi', 'andypusca@univ-danubius.ro', '12345678', NULL, '$2y$10$HIibNWKTD7qgv2QNkMbfuu4ORzSLBUUm.hR.B1XGlZqxp4bb58v4K', 'guest', NULL, '2023-05-18 04:01:54', '2023-05-18 04:01:54'),
-(32, 'Supaporn', 'Chuangchid', 'Executive Secretary', 'AUAP', 'secretariat@auap.org', '12345678', NULL, '$2y$10$zkGdJq97Ynpsig0Q05bDBe2U9trwr3btGQVDFsA/fWfqzL.4t7MIG', 'guest', NULL, '2023-05-18 04:03:18', '2023-05-18 04:03:18'),
-(33, 'Kazi Mesbah Ur', 'Rahman', 'Sub Secretariat', 'AUAP', 'info@auap.org', '12345678', NULL, '$2y$10$H7.rhw4xYbqzHi9xPYwtneU5/65O1yYpMQw6/4DZlRkkFe4nxvtq.', 'guest', NULL, '2023-05-18 04:04:50', '2023-05-18 04:04:50');
+(29, 'Dr. Md. Sabur', 'Khan', 'Founder & Chairman', 'Daffodil International University', 'sabur.khan@gmail.com', '12345678', NULL, '$2y$10$aOmHr3V2xPet5ttRGuoLhuafZzXnXc431JfqVvt6gGR.VOwSU4TwW', 'voter', NULL, '2023-05-18 03:59:04', '2023-05-18 03:59:04'),
+(30, 'Hari Mohan', 'Gupta', 'Chancellor', 'Jagran Lakecity University', 'chancellor@jlu.edu.in', '12345678', NULL, '$2y$10$50DX9lzlz9yUZudQYhuTqOTfCiKG2KoZbbed650nOFVLdL82AK9ce', 'voter', NULL, '2023-05-18 04:00:10', '2023-05-18 04:00:10'),
+(31, 'Dr. Andy', 'Pusca', 'President', 'Danubius University of Galaţi', 'andypusca@univ-danubius.ro', '12345678', NULL, '$2y$10$HIibNWKTD7qgv2QNkMbfuu4ORzSLBUUm.hR.B1XGlZqxp4bb58v4K', 'voter', NULL, '2023-05-18 04:01:54', '2023-05-18 04:01:54'),
+(32, 'Supaporn', 'Chuangchid', 'Executive Secretary', 'AUAP', 'secretariat@auap.org', '12345678', NULL, '$2y$10$zkGdJq97Ynpsig0Q05bDBe2U9trwr3btGQVDFsA/fWfqzL.4t7MIG', 'voter', NULL, '2023-05-18 04:03:18', '2023-05-18 04:03:18'),
+(33, 'Kazi Mesbah Ur', 'Rahman', 'Sub Secretariat', 'AUAP', 'info@auap.org', '12345678', NULL, '$2y$10$H7.rhw4xYbqzHi9xPYwtneU5/65O1yYpMQw6/4DZlRkkFe4nxvtq.', 'voter', NULL, '2023-05-18 04:04:50', '2023-05-18 04:04:50');
 
 -- --------------------------------------------------------
 

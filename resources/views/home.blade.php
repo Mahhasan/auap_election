@@ -143,12 +143,12 @@
                         <div class="progress-bar bg-warning" role="progressbar" style="width: {{$eskendaryTotalVote}}%"
                             aria-valuenow="{{$eskendaryTotalVote}}" aria-valuemin="0" aria-valuemax="{{$casted_votes}}"></div>
                     </div>
-                    <h4 class="small font-weight-bold"><i class="fa fa-user"  aria-hidden="true"></i> Prof. Dr. A.K.M. Fazlul Haque<span
+                    <!-- <h4 class="small font-weight-bold"><i class="fa fa-user"  aria-hidden="true"></i> Prof. Dr. A.K.M. Fazlul Haque<span
                             class="float-right">Total vote: {{$akmTotalVote}}</span></h4>
                     <div class="progress mb-4">
                         <div class="progress-bar" role="progressbar" style="width: {{$akmTotalVote}}%"
                             aria-valuenow="{{$akmTotalVote}}" aria-valuemin="0" aria-valuemax="{{$casted_votes}}"></div>
-                    </div>
+                    </div> -->
                     <h4 class="small font-weight-bold"><i class="fa fa-user"  aria-hidden="true"></i> Prof. Ujjwal K Chowdhury<span
                             class="float-right">Total vote: {{$anuTotalVote}}</span></h4>
                     <div class="progress mb-4">
