@@ -320,7 +320,7 @@
                                                             <div class="col-md-6">
                                                                 <img src="/frontend/assets/img/candidates/{{ $candidate->profile_pic }}" alt="" height="50%" width="80%" style="border-radius: 10px;">
                                                             </div>
-                                                            <div class="col-md-6 text-left">
+                                                            <div class="col-md-6 text-left candidateInfo">
                                                                 <b>{{ $candidate->first_name }} {{ $candidate->last_name }}</b><br>
                                                                 <small>{{ $candidate->designation }}</small><br>
                                                                 <small>{{ $candidate->organization }}</small><br>
@@ -382,11 +382,11 @@
                             <div class="col-md-6">
                                 <div class="candidate-card" style="border-radius: 10px; margin-bottom: 20px;">
                                     <div class="candidate-info">
-                                        <div class="row"> 
+                                        <div class="row "> 
                                             <div class="col-md-6">
                                                 <img src="/frontend/assets/img/candidates/{{ $candidate->profile_pic }}" alt="" height="50%" width="80%" style="border-radius: 10px;">
                                             </div>
-                                            <div class="col-md-6 text-left">
+                                            <div class="col-md-6 text-left candidateInfo">
                                                 <b>{{ $candidate->first_name }} {{ $candidate->last_name }}</b><br>
                                                 <small>{{ $candidate->designation }}</small><br>
                                                 <small>{{ $candidate->organization }}</small><br>
@@ -403,9 +403,9 @@
                             </div>
                             @endforeach
                         </div> 
-                        <div class="row">
-                            <div class="col-xs-12 text-center ">
-                                <a class="btn btn-lg btn-primary" href="/login"><i class="fa fa-hand-pointer-o"></i> Click here to Login and vote your favorite Candidate</a>
+                        <div class="row text-center">
+                            <div class="col-md-6" style="float:none;margin:auto;">
+                                <a class="lgx-btn" href="/login"><i class="fa fa-hand-pointer-o"></i> Click here to Login and vote your favorite Candidate</a>
                             </div>
                         </div>
                     </div>
